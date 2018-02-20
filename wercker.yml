@@ -1,0 +1,38 @@
+# Copyright 2018, Oracle Corporation and/or affiliates.  All rights reserved.
+
+# This is a sample that demonstrates how to use the SpotBugs 
+# Wercker step. 
+#
+
+box: 
+  id: store/oracle/serverjre
+  username: $DOCKER_USERNAME
+  password: $DOCKER_PASSWORD
+  tag: 8
+
+# this pipeline does not really do anything, it just acts as a fan-out point to run all of test/demo pipelines
+dev:
+  steps:
+    - script:
+      name: Dev
+      code: |
+        echo "Hello SpotBugs!"
+        echo "Choose the pipeline you want to run, e.g. 'regular-test' and run it like this:"
+        echo "wercker build --pipeline=regular-test"
+    - justin-hoang/spotbugs-step@3.1.2 "https://github.com/justin-hoang/spotbugs-step/archive/master.tar.gz":
+      format: -xml
+      output: ./result.log
+      classpath: build/classes
+    - internal/shell
+build:
+  steps:
+    - justin-hoang/spotbugs-step@3.1.2:
+      format: -xml
+      output: ./result.log
+      classpath: build/classes
+regular-test:
+  steps:
+    - justin-hoang/spotbugs-step:
+      format: -xml
+      output: ./result.log
+      classpath: build/classes
