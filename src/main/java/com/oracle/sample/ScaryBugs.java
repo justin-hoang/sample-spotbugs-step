@@ -35,12 +35,7 @@ public class ScaryBugs {
             //else Do Something
         }
     }
-
-    /**
-     * The main method.
-     *
-     * @param args the args
-     */
+    
     public static void main(String[] args) {
         ScaryBugs instance = new ScaryBugs();
         instance.executeSomeConditions();
