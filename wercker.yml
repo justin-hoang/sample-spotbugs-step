@@ -23,7 +23,6 @@ dev:
       format: -xml
       output: ./result.log
       classpath: target/classes
-#    - internal/shell
 build:
   steps:
     - justin-hoang/spotbugs-step@3.1.2:
