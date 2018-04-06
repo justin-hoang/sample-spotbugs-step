@@ -19,20 +19,15 @@ dev:
         echo "Hello SpotBugs!"
         echo "Choose the pipeline you want to run, e.g. 'regular-test' and run it like this:"
         echo "wercker build --pipeline=regular-test"
-    - justin-hoang/spotbugs-step@3.1.4 "https://github.com/justin-hoang/spotbugs-step/archive/master.tar.gz":
-      format: -xml
-      output: ./result.log
-      classpath: target/classes
-#    - internal/shell
 build:
   steps:
-    - justin-hoang/spotbugs-step@3.1.2:
+    - wercker/spotbugs-step:
       format: -xml
       output: ./result.log
       classpath: target/classes
 regular-test:
   steps:
-    - justin-hoang/spotbugs-step:
+    - wercker/spotbugs-step:
       format: -xml
       output: ./result.log
       classpath: target/classes

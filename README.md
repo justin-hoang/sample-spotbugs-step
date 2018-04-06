@@ -14,12 +14,20 @@ box:
   password: $DOCKER_PASSWORD
   tag: 8
 
-regular-test:
+build:
   steps:
-    - justin-hoang/spotbugs-step:
+    - wercker/spotbugs-step:
       format: -xml
       output: ./result.log
       classpath: build/classes
 ```
+before running do the following exports:
+---
+export X_DOCKER_USERNAME="your docker username"
+export X_DOCKER_PASSWORD="your docker password"
 
+Make sure you have your project built:
+mvn clean install
+wercker build
+---
 When the build is finished, the output will be available in the file `result.log`, as requested.

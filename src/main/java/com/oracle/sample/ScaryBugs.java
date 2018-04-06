@@ -35,7 +35,7 @@ public class ScaryBugs {
             //else Do Something
         }
     }
-    
+
     public static void main(String[] args) {
         ScaryBugs instance = new ScaryBugs();
         instance.executeSomeConditions();
