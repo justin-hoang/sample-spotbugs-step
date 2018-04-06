@@ -22,13 +22,14 @@ build:
       output: ./result.log
       classpath: target/classes
 ```
-before running do the following exports:
----
+Before running wercker build, do the following exports:
+```
 export X_DOCKER_USERNAME="your docker username"
 export X_DOCKER_PASSWORD="your docker password"
-
+```
 Make sure you have your project built:
+```
 mvn clean install
 wercker build
----
+```
 When the build is finished, the output will be available in the file `result.log`, as requested.
