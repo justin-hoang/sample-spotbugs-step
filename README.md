@@ -4,7 +4,8 @@ This project demonstrates how to use the SpotBugs Wercker Step to do a static co
 
 ## Usage
 The example `wercker.yml` below demonstrates how you can use the SpotBugs Wercker Step.
-In this example, we run the SpotBugs static analysis against the target classes in build/classes.
+In this example, we run the SpotBugs static analysis against the target classes in target/classes.
+SpotBugs step works with byte codes so make sure you build the project first before running SpotBugs step.
 All the the parameters are required in this case, the output format, the output file and the classpath to the classes or jar file.
 
 ```
@@ -19,7 +20,7 @@ build:
     - wercker/spotbugs-step:
       format: -xml
       output: ./result.log
-      classpath: build/classes
+      classpath: target/classes
 ```
 before running do the following exports:
 ---
